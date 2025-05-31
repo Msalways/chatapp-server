@@ -11,7 +11,7 @@ export async function getMongoClient(): Promise<MongoClient> {
   try {
     if (!client) {
       client = new MongoClient(uri, {
-        tlsAllowInvalidCertificates: true,
+        // tlsAllowInvalidCertificates: true,
         tls: true,
       });
       await client.connect();

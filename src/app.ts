@@ -52,14 +52,7 @@ app.use("/check", (req, res) => {
   res.status(200).send("Working");
 });
 
-app.use(
-  "/",
-  // validateUserSession,
-  // (req, res, next) => {
-  //   res.send("Check");
-  // },
-  originRoutes
-);
+app.use("/", validateUserSession, originRoutes);
 
 app.use(errorHandler);
 export default app;
