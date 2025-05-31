@@ -26,7 +26,7 @@ function getMongoClient() {
         try {
             if (!client) {
                 client = new mongodb_1.MongoClient(uri, {
-                    tlsAllowInvalidCertificates: true,
+                    // tlsAllowInvalidCertificates: true,
                     tls: true,
                 });
                 yield client.connect();

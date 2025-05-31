@@ -49,6 +49,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/check", (req, res) => {
+  console.log(config.frontend_url);
+
   res.status(200).send("Working");
 });
 

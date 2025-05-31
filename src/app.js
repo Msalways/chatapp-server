@@ -11,6 +11,7 @@ const config_1 = __importDefault(require("./config/config"));
 const passport_1 = __importDefault(require("passport"));
 const cors_1 = __importDefault(require("cors"));
 const mongoClient_1 = require("./lib/mongoClient");
+const validateSession_1 = __importDefault(require("./middleware/validateSession"));
 const errorHandler_1 = __importDefault(require("./middleware/errorHandler"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -39,13 +40,9 @@ app.use((0, express_session_1.default)({
 app.use(passport_1.default.initialize());
 app.use(passport_1.default.session());
 app.use("/check", (req, res) => {
+    console.log(config_1.default.frontend_url);
     res.status(200).send("Working");
 });
-app.use("/", 
-// validateUserSession,
-// (req, res, next) => {
-//   res.send("Check");
-// },
-originRoutes_1.default);
+app.use("/", validateSession_1.default, originRoutes_1.default);
 app.use(errorHandler_1.default);
 exports.default = app;
